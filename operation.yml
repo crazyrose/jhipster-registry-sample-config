@@ -225,7 +225,230 @@ performance:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+      defaultZone: http://admin:${jhipster.registry.password}@jhipster.smartscity.com/eureka/
+#      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://jhipster.smartscity.com/eureka/}
+  instance:
+    hostname: operation
+    #nonSecurePort: 80
+ribbon:
+  eureka:
+    enabled: true
+
+springfox.documentation.swagger.v2.path: /api-docs
+spring.jackson.date-format: com.yingu.operation.swagger.util.RFC3339DateFormat
+spring.jackson.serialization.WRITE_DATES_AS_TIMESTAMPS: false
+
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.yingu.operation.repositories.repository
+  type-handlers-package: org.apache.ibatis.type.LocalDateTypeHandler
+
+spring:
+  profiles: local
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/operation?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+  rabbitmq:
+      addresses: mq.smartscity.com
+      virtual-host: ph_test
+      port: 5672
+      username: admin
+      password: smartscitymqm
+      listener:
+        concurrency: 1
+        max-concurrency: 1024
+        acknowledge-mode: auto
+        default-requeue-rejected: false #决定由于监听器抛出异常而拒绝的消息是否被重新放回队列。默认值为true。
+        retry:
+          max-attempts: 3
+          enabled: true
+          stateless: true
+  redis:
+      database: 0
+      host: 172.24.133.35
+      port: 20005
+      timeout: 6000
+
+
+server:
+  port: 8443
+  tomcat:
+    max-threads: 1024
+    uri-encoding: utf-8
+
+#custom:
+#  tomcat:
+#    https:
+#      port: 8443
+#      secure: true
+#      scheme: https
+#      maxConnection: 2000
+#      ssl: true
+#      keystore: /data/config/puhui_operation/api/thekeystore
+#      keystore-password: changeit
+#      keystorePassword: changeit
+
+cas:
+  host: https://cas-test.yingu.com/cas
+  rest: /v1/tickets
+  appKey: 615d174a3f4742b1b733cbe8046fdfa8
+  appSecret: 08aa2c72-63e8-4c62-af3b-2233a1430d90
+#  appKey: 45fa207cd0ce4ab4b4e0afbdba2bd914
+#  appSecret: 4fde7fd957b044e29e97550f107a24df
+
+loan:
+  host: http://172.24.133.33:9100
+  api:
+    notice: /lo-server/api/apply/updateApplyStatus
+    confirm: /lo-server/api/contract/applycallback
+    changeAccountType: /lo-server/api/apply/updateBusinessType
+    noticeChangeCard: /lo-server/api/bindCard/modifierBankCard
+
+loanstore:
+  host: http://172.24.133.33:8080
+  api:
+    storeRegion: /loan/api/storeconf/lbtSysorgRuleRegion/search/v1
+
+ygonline:
+  host: http://qa01-jr-api-430.yingujr.com
+  api:
+    upload: /file-store/file/storeFile
+    preview: /file-query/query/getFileViewUrl
+    previewThumbnails: /file-query/query/getFileViewUrlSL
+  cache:
+    file: /usr/local/service/store/
+    thumbnail: thumbnail/
+    thumbnailWidth: 160
+    thumbnailHeight: 160
+  suffixes:
+    image: jpg,jpeg,png,tiff,tif
+    others: doc,docx,pdf,xlsx,ppt,txt
+
+globalservice:
+  host: http://10.0.129.161:9080/globalId
+  code: KHZX
+  num: 1
+  open: true
+
+disclosure:
+  host: http://10.0.129.161:8280
+  loaninfo: /infoDisclosure/infoDisclosure
+  pushinfo: /debt/debt
+
+afterloan:
+  host: http://172.24.133.33:13080
+  api:
+    waitfirstaudit: /service/Contract/preExamLoanDetail
+    waitfinalaudit:
+    queryLoanDetailInfo: /service/NewOperation/queryLoanDetailInfo
+    noticeChangeCard: /service/UpdateRecAccountCard/updateRecAccountCardInfo
+    noticeChangeRepayDate: /service/FinancialManagement/repaymentDayChangeAudit
+  mq:
+    open: 1
+credit:
+  host: http://172.24.164.31:8080
+  api:
+    verifyCode: /zxbg/LoginVerificationCode
+    login: /zxbg/LoginVerifylanding
+    download: /zxbg/downloadPDF
+
+loanapp:
+  host: http://10.0.129.210:8092
+  api:
+    getHistoryCustomerInfo: /api/LoanApp/GetHistoryCustomerInfo
+
+loancontract:
+  host: http://qa01-jr-api-430.yingujr.com
+  api:
+    getContractUrlList: /file-query/query/getContractUrlList
+
+oss:
+  endpoint: http://oss-cn-beijing.aliyuncs.com
+  accessKeyId: LTAIsTq6lfmYsdxw
+  accessKeySecret: tsorFLKbqcI0uUwF6rP3icsYoGqxZh
+  bucketName: yghy-test
+
+service:
+  host: https://172.24.133.33:8443
+
+user:
+  groupCode: admin
+
+jwt:
+  ttlMillis: 6000000
+  sec: test
+  tokenName: accessToken
+
+login:
+  useFilter: true
+
+#true是 false否舍去角分
+calculation:
+  rounding: false
+
+#签约的时间期限
+sign:
+  limit: 15
+
+schedule:
+  run: true
+
+#还款类型 0 固定还款日15或30 ,1 对日还款  
+repay:
+  type: 0
+
+#是否购买保险
+insurance:
+  buy: false
+
+
+custom:
+  tomcat:
+    https:
+      port: 8443
+      secure: true
+      scheme: https
+      maxConnection: 2000
+      ssl: true
+      keystore: /data/config/puhui_operation/api/thekeystore
+      keystore-password: changeit
+      keystorePassword: changeit
+
+# 信审补件的时间期限
+creditauditbj:
+  limit: 10
+
+# 终审驳回的时间期限
+finalauditreject:
+  limit: 10
+#普惠开户
+account:
+  host: http://172.24.133.33:8000
+  appKey: 1
+  appSecret: 1
+  api:
+    notice: /foreign/openaccount
+
+#调单功能开始锁定时间
+designate:
+  lock: 22
+#业绩核对生成Excel路径
+performance:
+  excel: /data/config/puhui_operation/api/tmp/
+  download: /data/config/puhui_operation/api/tmp/
+  roles: 超级管理员
+
+---
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:${jhipster.registry.password}@jhipster.smartscity.com/eureka/
+#      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
   instance:
     hostname: operation
     #nonSecurePort: 80
