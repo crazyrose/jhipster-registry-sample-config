@@ -51,7 +51,7 @@ spring:
       host: 172.24.133.35
       port: 20005
       timeout: 6000
-
+      password: myredis
 
 server:
   port: 8443
