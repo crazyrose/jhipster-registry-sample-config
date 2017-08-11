@@ -221,6 +221,14 @@ performance:
   download: /data/config/puhui_operation/api/tmp/
   roles: 超级管理员
 
+#还款类型 0 固定还款日15或30 ,1 对日还款   
+#repay:
+#  type: 0
+dataRole:
+  lv1: 普惠管理部总监
+  lv2: 大区总监
+  lv3: 分中心总监
+  lv4: 区域经理
 ---
 eureka:
   client:
