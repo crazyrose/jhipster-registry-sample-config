@@ -318,7 +318,7 @@ eureka:
       defaultZone: http://admin:${jhipster.registry.password}@jhipster.smartscity.com/eureka/
 #      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
   instance:
-    hostname: operation
+    hostname: ruleengine
     #nonSecurePort: 80
 ribbon:
   eureka:
