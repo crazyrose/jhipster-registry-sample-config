@@ -7,11 +7,13 @@ eureka:
         prefer-ip-address: true
     client:
         service-url:
-            defaultZone: http://admin:${jhipster.registry.password}@172.24.132.134:8761/eureka/
-#            defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+#            defaultZone: http://admin:${jhipster.registry.password}@172.24.132.134:8761/eureka/
+            uri: http://admin:${jhipster.registry.password}@${eureka.host}/config
 
 spring:
-    profiles: dev
+    profiles:
+        active: dev
+        include: swagger
     devtools:
         restart:
             enabled: true
@@ -61,7 +63,7 @@ spring:
     thymeleaf:
         cache: false
     zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
-        base-url: http://localhost:9411
+        base-url: ${zipkin_host}
         enabled: false
         locator:
             discovery:
@@ -144,7 +146,7 @@ jhipster:
     logging:
         logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
             enabled: true
-            host: www.smartscity.com
+            host: ${logstash.host}
             port: 5000
             queue-size: 512
         spectator-metrics: # Reports Spectator Circuit Breaker metrics in the logs
@@ -161,6 +163,7 @@ jhipster:
 # ===================================================================
 
 application:
+
 
 ---
 
