@@ -5,7 +5,8 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://admin:${jhipster.registry.password}@172.24.132.134:8761/eureka/
+#      defaultZone: http://admin:${jhipster.registry.password}@172.24.132.134:8761/eureka/
+      defaultZone: http://admin:${jhipster.registry.password}@${eureka.host}/eureka/
 #      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://jhipster.smartscity.com/eureka/}
   instance:
     prefer-ip-address: true

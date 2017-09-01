@@ -2,13 +2,13 @@ spring:
   profiles:
     active: dev 
 ---
-eureka:
-    instance:
-        prefer-ip-address: true
-    client:
-        service-url:
+#eureka:
+#    instance:
+#        prefer-ip-address: true
+#    client:
+#        service-url:
 #            defaultZone: http://admin:${jhipster.registry.password}@172.24.132.134:8761/eureka/
-            uri: http://admin:${jhipster.registry.password}@${eureka.host}/config
+#            uri: http://admin:${jhipster.registry.password}@${eureka.host}/config
 
 spring:
     profiles: dev
