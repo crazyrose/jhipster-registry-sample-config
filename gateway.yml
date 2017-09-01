@@ -11,9 +11,7 @@ eureka:
             uri: http://admin:${jhipster.registry.password}@${eureka.host}/config
 
 spring:
-    profiles:
-        active: dev
-        include: swagger
+    profiles: dev
     devtools:
         restart:
             enabled: true
