@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: office
+    active: dev 
 ---
 eureka:
     instance:
